@@ -22,3 +22,11 @@ python -B agent_recall.py ".\recall-demo.rl" "LOT-8 is unrelated. What kit curre
 ```
 
 The result should show `LOT-7` and the same route and loan. The `matches` field comes from the read-only Relate lookup. The model check indicates whether the model returned that exact tool result. After the demo, stop its server with `lms server stop` and unload its model with `lms unload recall-trail-test`.
+
+## How it uses Relate
+
+Recall Trail stores its example graph in the `data/graph/` directory. Reopening it lets the same recall lookup run against the saved installation and checkout links.
+
+```powershell
+python -B recall.py data/graph/ --batch LOT-7
+```
